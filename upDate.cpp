@@ -23,3 +23,14 @@ upDate::upDate(int m, int d, int y)
     day = d;
     year = y;
 }
+
+int upDate::G2J(int m, int d, int y)
+{
+    int JD;
+
+    JD = d - 32075 + 1461 * (y + 4800 + (m - 14) / 12) / 4 + 367 * (m - 2 - (m - 14) /12 * 12)
+        / 12 - 3 * ((y + 4900 + (m - 14) / 12) / 100) / 4;
+    
+    return JD;
+        
+}

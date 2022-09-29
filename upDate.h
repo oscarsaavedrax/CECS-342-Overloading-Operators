@@ -7,6 +7,8 @@
 // program from any other source. I further certify that I typed each and every line of 
 // code in this program.
 
+#pragma
+
 class upDate
 {
     private:
@@ -20,6 +22,9 @@ class upDate
         upDate(int m, int d, int y);
         // Overloaded addition operator
         upDate operator+(int);
+
+        // Convert Gregorian date to Julian date
+        int G2J(int m, int d, int y);
 
 
 };
