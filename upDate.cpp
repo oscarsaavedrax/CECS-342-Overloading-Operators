@@ -9,9 +9,17 @@
 
 #include "upDate.h"
 
+// Default constructor
 upDate::upDate()
 {
     month = 5;
     day = 11;
     year = 1959;
+}
+
+upDate::upDate(int m, int d, int y)
+{
+    month = m;
+    day = d;
+    year = y;
 }
