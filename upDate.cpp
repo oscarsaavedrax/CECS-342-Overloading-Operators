@@ -17,6 +17,7 @@ upDate::upDate()
     year = 1959;
 }
 
+// Overloaded constructor
 upDate::upDate(int m, int d, int y)
 {
     month = m;
@@ -24,6 +25,7 @@ upDate::upDate(int m, int d, int y)
     year = y;
 }
 
+// Convert Gregorian date to Julian date
 int upDate::G2J(int m, int d, int y)
 {
     int JD;
@@ -33,4 +35,45 @@ int upDate::G2J(int m, int d, int y)
     
     return JD;
         
+}
+
+// Convert Julian date to Gregorian date
+void upDate::J2G(int JD, int &m, int &d, int &y)
+{
+    // Create tempory integer variables
+    int i, j, k, l, n;
+    
+    l = JD + 68569;
+    n = 4 * l / 146097;
+    l = l - (146097 * n + 3) / 4;
+    i = 4000 * (l + 1) / 1461001;
+    l = l - 1461 * i / 4 + 31;
+    j = 80 * l / 2447;
+    k = l - 2447 * j / 80;
+    l = j / 11;
+    j = j + 2 - 12 * l;
+    i = 100 * (n - 49) + i + l;
+
+    m = j;
+    d = k;
+    y = i;
+    
+}
+
+// Getter for month variable
+int upDate::getMonth() const
+{
+    return month;
+}
+
+// Getter for day variable
+int upDate::getDay() const
+{
+    return day;
+}
+
+// Getter for year variable
+int upDate::getYear() const
+{
+    return year;
 }

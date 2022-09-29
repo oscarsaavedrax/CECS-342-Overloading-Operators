@@ -26,5 +26,12 @@ class upDate
         // Convert Gregorian date to Julian date
         int G2J(int m, int d, int y);
 
+        // Convert Julian date to Gregorian date
+        void J2G(int JD, int &m, int &d, int &y);
+
+        int getMonth() const;
+        int getDay() const;
+        int getYear() const;
+
 
 };
