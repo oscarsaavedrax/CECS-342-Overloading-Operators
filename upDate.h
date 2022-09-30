@@ -20,6 +20,7 @@ class upDate
         upDate();   // Default constructor
         upDate(int m, int d, int y);    // Overloaded constructor
         upDate(int J); // Overloaded constructor
+        upDate(const upDate &D); // Copy constructor
         
         upDate operator+(int);  // Overloaded addition operator
 

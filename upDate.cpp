@@ -62,6 +62,17 @@ upDate::upDate(int J)
     date_ptr[2] = temp_y;
 }// end upDate overloaded constructor
 
+// Copy constructor
+upDate::upDate(const upDate &D)
+{
+    date_ptr = new int[3];
+    cout << "New date pointer created." << endl;
+
+    date_ptr[0] = D.getMonth();
+    date_ptr[1] = D.getDay();
+    date_ptr[2] = D.getYear();
+}// end copy constructor
+
 // Function to verify the entered date is valid
 bool upDate::validDate(int m, int d, int y)
 {
