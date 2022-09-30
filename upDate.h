@@ -7,6 +7,7 @@
 // program from any other source. I further certify that I typed each and every line of 
 // code in this program.
 
+#include <iostream>
 #include <string>
 using namespace std;
 
@@ -30,6 +31,8 @@ class upDate
         upDate& operator-=(int n); // Overloaded subtraction with assignment operator
         upDate& operator+(int n);  // Overloaded addition operator
         upDate& operator-(int n); // Overloaded subtraction operator
+
+        friend ostream& operator<<(ostream& out, const upDate &D); // Overloaded cout operator
 
         int getMonth() const;   // Get month
         int getDay() const;     // Get day

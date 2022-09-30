@@ -190,6 +190,14 @@ upDate& upDate::operator-(int n)
     return *this;
 }// end operator-
 
+// Overloaded cout operator
+ostream& operator<<(ostream& out, const upDate &D)
+{
+    out << D.date_ptr[0] << "/" << D.date_ptr[1] << "/" << D.date_ptr[2];
+
+    return out;
+}// end cout operator
+
 // Getter for month variable
 int upDate::getMonth() const
 {
