@@ -27,15 +27,15 @@ class upDate
         void J2G(int JD, int &m, int &d, int &y);   // Convert Julian date to Gregorian date
         int julian(); // Return the Julian integer of the date
 
-        upDate& operator=(const upDate &D); // Overloaded assignment operator
-        upDate& operator+=(int n); // Overloaded addition with assignment operator
-        upDate& operator-=(int n); // Overloaded subtraction with assignment operator
-        upDate& operator+(int n);  // Overloaded addition operator
-        upDate& operator-(int n); // Overloaded subtraction operator
-        upDate& operator++(int); // Overloaded postfix increment operator
-        upDate& operator++(); // Overloaded prefix increment operator
-        upDate& operator--(int); // Overloaded postfix decrement operator
-        upDate& operator--(); // Overloaded prefix decrement operator
+        upDate operator=(const upDate &D); // Overloaded assignment operator
+        upDate operator+=(int n); // Overloaded addition with assignment operator
+        upDate operator-=(int n); // Overloaded subtraction with assignment operator
+        upDate operator+(int n);  // Overloaded addition operator
+        upDate operator-(int n); // Overloaded subtraction operator
+        upDate operator++(int); // Overloaded postfix increment operator
+        upDate operator++(); // Overloaded prefix increment operator
+        upDate operator--(int); // Overloaded postfix decrement operator
+        upDate operator--(); // Overloaded prefix decrement operator
 
         bool operator==(const upDate &D); // Overloaded equality operator
         bool operator<(const upDate &D); // Overloaded less than operator
@@ -53,6 +53,5 @@ class upDate
 
         static int GetDateCount();  // Static method to get number of date objects
 
-        ~upDate();// Destructor
-
+        ~upDate();// Deconstructor
 };

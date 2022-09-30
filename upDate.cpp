@@ -138,119 +138,152 @@ void upDate::J2G(int JD, int &m, int &d, int &y)
 // Return the Julian integer of the date
 int upDate::julian()
 {
-    int JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+    //Create temporary variable
+    upDate temp(*this);
+
+    int JD = G2J(temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]);
 
     return JD;
 }// end julian
 
 // Overloaded assignment operator
-upDate& upDate::operator=(const upDate &D)
+upDate upDate::operator=(const upDate &D)
 {
-    // Deep copy
-    this->date_ptr[0] = D.date_ptr[0];
-    this->date_ptr[1] = D.date_ptr[1];
-    this->date_ptr[2] = D.date_ptr[2];
+    //Create temporary variable
+    upDate temp(*this);
 
-    return *this;
+    // Deep copy
+    temp.date_ptr[0] = D.date_ptr[0];
+    temp.date_ptr[1] = D.date_ptr[1];
+    temp.date_ptr[2] = D.date_ptr[2];
+
+    return temp;
 }// end operator=
 
 // Overloaded addition with assignment operator
-upDate& upDate::operator+=(int n)
+upDate upDate::operator+=(int n)
 {
+    //Create temporary variable
+    upDate temp(*this);
+
     // Convert to Julian and add n 
-    int JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]) + n;
+    int JD = G2J(temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]) + n;
 
     // Convert back to Gregorian
-    J2G(JD, this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+    J2G(JD, temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]);
 
-    return *this;
+    return temp;
 }// end operator+=
 
 // Overloaded subtraction with assignment operator
-upDate& upDate::operator-=(int n)
+upDate upDate::operator-=(int n)
 {
+    //Create temporary variable
+    upDate temp(*this);
+
     // Convert to Julian and subtract n 
-    int JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]) - n;
+    int JD = G2J(temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]) - n;
 
     // Convert back to Gregorian
-    J2G(JD, this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+    J2G(JD, temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]);
 
-    return *this;
+    return temp;
 }// end operator-=
 
 // Overloaded addition operator
-upDate& upDate::operator+(int n)
+upDate upDate::operator+(int n)
 {
+    //Create temporary variable
+    upDate temp(*this);
+
     // Convert to Julian and add n 
-    int JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]) + n;
+    int JD = G2J(temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]) + n;
 
     // Convert back to Gregorian
-    J2G(JD, this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+    J2G(JD, temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]);
 
-    return *this;
+    return temp;
 }// end operator+
 
 // Overloaded subtraction operator
-upDate& upDate::operator-(int n)
+upDate upDate::operator-(int n)
 {
+    //Create temporary variable
+    upDate temp(*this);
+
     // Convert to Julian and subtract n 
-    int JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]) - n;
+    int JD = G2J(temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]) - n;
 
     // Convert back to Gregorian
-    J2G(JD, this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+    J2G(JD, temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]);
 
-    return *this;
+    return temp;
 }// end operator-
 
 // Overloaded postfix operator increment operator
-upDate& upDate::operator++(int)
+upDate upDate::operator++(int)
 {
-    // Increment by one
-    this->date_ptr[1] = date_ptr[1]++;
+    //Create temporary variable
+    upDate temp(*this);
 
-    return *this;
+    // Increment by one
+    temp.date_ptr[1] = date_ptr[1]++;
+
+    return temp;
 }// end operator++(int)
 
 // Overloaded prefix increment operator
-upDate& upDate::operator++()
+upDate upDate::operator++()
 {
-    // Increment by one
-    this->date_ptr[1] = ++date_ptr[1];
+    //Create temporary variable
+    upDate temp(*this);
 
-    return *this;
+    // Increment by one
+    temp.date_ptr[1] = ++date_ptr[1];
+
+    return temp;
 }// end operator++()
 
 // Overloaded postfix decrement operator
-upDate& upDate::operator--(int)
+upDate upDate::operator--(int)
 {
-    // Decrement by one
-    this->date_ptr[1] = date_ptr[1]--;
+    //Create temporary variable
+    upDate temp(*this);
 
-    return *this;
+    // Decrement by one
+    temp.date_ptr[1] = date_ptr[1]--;
+
+    return temp;
     
 }// end operator--(int)
 
 // Overloaded prefix decrement operator
-upDate& upDate::operator--()
+upDate upDate::operator--()
 {
-    // Decrement by one
-    this->date_ptr[1] = --date_ptr[1];
+    //Create temporary variable
+    upDate temp(*this);
 
-    return *this;
+    // Decrement by one
+    temp.date_ptr[1] = --date_ptr[1];
+
+    return temp;
 
 }// end operator--()
 
 // Overloaded equality operator
 bool upDate::operator==(const upDate &D)
 {
+    //Create temporary variable
+    upDate temp(*this);
+
     bool flag = false;
 
     // Convert to Julian
-    int this_JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+    int temp_JD = G2J(temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]);
     int other_JD = G2J(D.date_ptr[0], D.date_ptr[1], D.date_ptr[2]);
 
     // Compare Julian dates
-    if (this_JD == other_JD)
+    if (temp_JD == other_JD)
         flag = true;
 
     return flag;
@@ -259,45 +292,52 @@ bool upDate::operator==(const upDate &D)
 // Overloaded less than operator
 bool upDate::operator<(const upDate &D)
 {
+    //Create temporary variable
+    upDate temp(*this);
+
     bool flag = false;
 
     // Convert to Julian
-    int this_JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+    int temp_JD = G2J(temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]);
     int other_JD = G2J(D.date_ptr[0], D.date_ptr[1], D.date_ptr[2]);
 
     // Compare Julian dates
-    if (this_JD < other_JD)
+    if (temp_JD < other_JD)
         flag = true;
 
     return flag;
-
 }// end operator<
 
 // Overloaded greater than operator
 bool upDate::operator>(const upDate &D)
 {
+    //Create temporary variable
+    upDate temp(*this);
+
     bool flag = false;
 
     // Convert to Julian
-    int this_JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+    int temp_JD = G2J(temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]);
     int other_JD = G2J(D.date_ptr[0], D.date_ptr[1], D.date_ptr[2]);
 
     // Compare Julian dates
-    if (this_JD > other_JD)
+    if (temp_JD > other_JD)
         flag = true;
 
     return flag;
-
 }// end operator>
 
 //Overloaded subtraction operator with objects
 int upDate::operator-(const upDate &D)
 {
+    //Create temporary variable
+    upDate temp(*this);
+
     // Convert to Julian dates
-    int this_JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+    int temp_JD = G2J(temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]);
     int D_JD = G2J(D.date_ptr[0], D.date_ptr[1], D.date_ptr[2]);
 
-    return (this_JD - D_JD);
+    return (temp_JD - D_JD);
 }// end operator-(const upDate)
 
 // Overloaded cout operator
@@ -307,6 +347,17 @@ ostream& operator<<(ostream& out, const upDate &D)
 
     return out;
 }// end cout operator
+
+// Overloaded addition operator
+upDate operator+(int n, const upDate &D)
+{
+    upDate temp(D);
+    int JD = temp.G2J(temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]) + n;
+
+    temp.J2G(JD, temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]);
+    
+    return temp;
+}// end overloaded addition operator
 
 // Getter for month variable
 int upDate::getMonth() const
@@ -337,26 +388,15 @@ string upDate::getMonthName() const
     return months[date_ptr[0] - 1];
 }// end getMonthName
 
-// Overloaded addition operator
-upDate operator+(int n, const upDate &D)
-{
-    upDate temp(D);
-    int JD = temp.G2J(temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]) + n;
-
-    temp.J2G(JD, temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]);
-    
-    return temp;
-}// end overloaded addition operator
-
 // Static method to get number of date objects
 int upDate::GetDateCount()
 {
     return date_count;
 }// end GetDateCount
 
-// Destructor
+// Deconstructor
 upDate::~upDate()
 {
     delete []date_ptr;
     date_count -= 1;
-}// end upDate destructor
+}// end upDate deconstructor
