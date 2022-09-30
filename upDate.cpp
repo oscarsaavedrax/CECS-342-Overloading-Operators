@@ -45,6 +45,22 @@ upDate::upDate(int m, int d, int y)
     }
 }// end upDate overloaded constructor
 
+// Overloaded constructor
+upDate::upDate(int J)
+{
+    // Create variables
+    int temp_m, temp_d, temp_y;
+
+    J2G(J, temp_m, temp_d, temp_y);
+
+    date_ptr = new int[3];
+    cout << "New date pointer created." << endl;
+
+    date_ptr[0] = temp_m;
+    date_ptr[1] = temp_d;
+    date_ptr[2] = temp_y;
+}// end upDate overloaded constructor
+
 // Function to verify the entered date is valid
 bool upDate::validDate(int m, int d, int y)
 {

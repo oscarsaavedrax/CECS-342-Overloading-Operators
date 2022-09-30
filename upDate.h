@@ -16,6 +16,7 @@ class upDate
     public:
         upDate();   // Default constructor
         upDate(int m, int d, int y);    // Overloaded constructor
+        upDate(int J); // Overloaded constructor
         
         upDate operator+(int);  // Overloaded addition operator
 
