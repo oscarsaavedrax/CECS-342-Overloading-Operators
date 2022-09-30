@@ -8,6 +8,8 @@
 // code in this program.
 
 #include "upDate.h"
+#include <iostream>
+using namespace std;
 
 // Default constructor
 upDate::upDate()
@@ -76,4 +78,11 @@ int upDate::getDay() const
 int upDate::getYear() const
 {
     return year;
+}
+
+
+// Destructor
+upDate::~upDate()
+{
+    cout << "Destructor executed" << endl;
 }
