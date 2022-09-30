@@ -11,26 +11,21 @@ class upDate
 {
     private:
         int *date_ptr;  // Pointer to a integer date array
+            
+        bool validDate(int m, int d, int y);   // Verify the entered date is valid
     public:
-        // Default constructor
-        upDate();
-        // Overloaded constructor
-        upDate(int m, int d, int y);
-        // Overloaded addition operator
-        upDate operator+(int);
+        upDate();   // Default constructor
+        upDate(int m, int d, int y);    // Overloaded constructor
+        
+        upDate operator+(int);  // Overloaded addition operator
 
-        // Convert Gregorian date to Julian date
-        int G2J(int m, int d, int y);
+        int G2J(int m, int d, int y);   // Convert Gregorian date to Julian date
+        void J2G(int JD, int &m, int &d, int &y);   // Convert Julian date to Gregorian date
 
-        // Convert Julian date to Gregorian date
-        void J2G(int JD, int &m, int &d, int &y);
+        int getMonth() const;   // Get month
+        int getDay() const;     // Get day
+        int getYear() const;    // Get year
 
-        // Getters
-        int getMonth() const;
-        int getDay() const;
-        int getYear() const;
-
-        // Destructor
-        ~upDate();
+        ~upDate();// Destructor
 
 };

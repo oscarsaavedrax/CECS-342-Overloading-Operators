@@ -21,7 +21,7 @@ upDate::upDate()
     date_ptr[0] = 5;
     date_ptr[1] = 11;
     date_ptr[2] = 1959;
-}
+}// end upDate default constructor
 
 // Overloaded constructor
 upDate::upDate(int m, int d, int y)
@@ -30,10 +30,45 @@ upDate::upDate(int m, int d, int y)
     date_ptr = new int[3];
     cout << "New date pointer created." << endl;
 
-    date_ptr[0] = m;
-    date_ptr[1] = d;
-    date_ptr[2] = y;
-}
+    // Verify date is valid
+    if(validDate(m, d, y))
+    {
+        date_ptr[0] = m;
+        date_ptr[1] = d;
+        date_ptr[2] = y;
+    }
+    else
+    {
+        date_ptr[0] = 5;
+        date_ptr[1] = 11;
+        date_ptr[2] = 1959;
+    }
+}// end upDate overloaded constructor
+
+// Function to verify the entered date is valid
+bool upDate::validDate(int m, int d, int y)
+{
+    // Create variables
+    int temp_m, temp_d, temp_y;
+    bool valid_date = false;
+
+    // Assign date to be tested to temporary variables
+    temp_m = m;
+    temp_d = d;
+    temp_y = y;
+
+    // Get Julian date
+    int JD = G2J(m, d, y);
+
+    // Change JD back to Gregorian date
+    J2G(JD, m, d, y);
+
+    // Compare Gregorian dates
+    if(temp_m == m && temp_d == d && temp_y == y)
+        valid_date = true;
+
+    return valid_date;
+}// end validDate
 
 // Convert Gregorian date to Julian date
 int upDate::G2J(int m, int d, int y)
@@ -43,9 +78,8 @@ int upDate::G2J(int m, int d, int y)
     JD = d - 32075 + 1461 * (y + 4800 + (m - 14) / 12) / 4 + 367 * (m - 2 - (m - 14) /12 * 12)
         / 12 - 3 * ((y + 4900 + (m - 14) / 12) / 100) / 4;
     
-    return JD;
-        
-}
+    return JD;   
+}// end G2J
 
 // Convert Julian date to Gregorian date
 void upDate::J2G(int JD, int &m, int &d, int &y)
@@ -67,30 +101,29 @@ void upDate::J2G(int JD, int &m, int &d, int &y)
     m = j;
     d = k;
     y = i;
-    
-}
+}// end J2G
 
 // Getter for month variable
 int upDate::getMonth() const
 {
     return date_ptr[0];
-}
+}// end getMonth
 
 // Getter for day variable
 int upDate::getDay() const
 {
     return date_ptr[1];
-}
+} // end getDay
 
 // Getter for year variable
 int upDate::getYear() const
 {
     return date_ptr[2];
-}
+}// end getYear
 
 // Destructor
 upDate::~upDate()
 {
     delete []date_ptr;
     cout << "Date pointer destroyed." << endl;
-}
+}// end upDate destructor
