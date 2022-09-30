@@ -26,7 +26,8 @@ class upDate
         void J2G(int JD, int &m, int &d, int &y);   // Convert Julian date to Gregorian date
 
         upDate& operator=(const upDate &D); // Overloaded assignment operator
-        upDate operator+(int);  // Overloaded addition operator
+        upDate& operator+=(int n); // Overloaded addition with assignment operator
+        upDate& operator+(int n);  // Overloaded addition operator
 
         int getMonth() const;   // Get month
         int getDay() const;     // Get day

@@ -135,12 +135,24 @@ void upDate::J2G(int JD, int &m, int &d, int &y)
 upDate& upDate::operator=(const upDate &D)
 {
     // Deep copy
-    date_ptr[0] = D.date_ptr[0];
-    date_ptr[1] = D.date_ptr[1];
-    date_ptr[2] = D.date_ptr[2];
+    this->date_ptr[0] = D.date_ptr[0];
+    this->date_ptr[1] = D.date_ptr[1];
+    this->date_ptr[2] = D.date_ptr[2];
 
     return *this;
 }// end operator=
+
+// Overloaded addition with assignment operator
+upDate& upDate::operator+=(int n)
+{
+    // Convert to Julian and add n 
+    int JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]) + n;
+
+    // Convert back to Gregorian
+    J2G(JD, this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+
+    return *this;
+}// end operator+=
 
 // Getter for month variable
 int upDate::getMonth() const
