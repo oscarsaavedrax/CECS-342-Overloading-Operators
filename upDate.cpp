@@ -149,15 +149,12 @@ int upDate::julian()
 // Overloaded assignment operator
 upDate upDate::operator=(const upDate &D)
 {
-    //Create temporary variable
-    upDate temp(*this);
-
     // Deep copy
-    temp.date_ptr[0] = D.date_ptr[0];
-    temp.date_ptr[1] = D.date_ptr[1];
-    temp.date_ptr[2] = D.date_ptr[2];
+    this->date_ptr[0] = D.date_ptr[0];
+    this->date_ptr[1] = D.date_ptr[1];
+    this->date_ptr[2] = D.date_ptr[2];
 
-    return temp;
+    return *this;
 }// end operator=
 
 // Overloaded addition with assignment operator
