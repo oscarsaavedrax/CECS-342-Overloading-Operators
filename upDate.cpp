@@ -208,6 +208,26 @@ upDate& upDate::operator++()
     return *this;
 }// end operator++()
 
+// Overloaded postfix decrement operator
+upDate& upDate::operator--(int)
+{
+    // Decrement by one
+    this->date_ptr[1] = date_ptr[1]--;
+
+    return *this;
+    
+}// end operator--(int)
+
+// Overloaded prefix decrement operator
+upDate& upDate::operator--()
+{
+    // Decrement by one
+    this->date_ptr[1] = --date_ptr[1];
+
+    return *this;
+
+}// end operator--()
+
 // Overloaded cout operator
 ostream& operator<<(ostream& out, const upDate &D)
 {
