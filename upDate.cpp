@@ -190,6 +190,15 @@ upDate& upDate::operator-(int n)
     return *this;
 }// end operator-
 
+//Overloaded postfix operator increment operator
+upDate& upDate::operator++(int)
+{
+    // Increment by one
+    this->date_ptr[1] += 1;
+
+    return *this;
+}// end operator++
+
 // Overloaded cout operator
 ostream& operator<<(ostream& out, const upDate &D)
 {
