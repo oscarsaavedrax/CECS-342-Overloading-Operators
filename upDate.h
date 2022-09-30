@@ -7,6 +7,9 @@
 // program from any other source. I further certify that I typed each and every line of 
 // code in this program.
 
+#include <string>
+using namespace std;
+
 class upDate
 {
     private:
@@ -26,6 +29,7 @@ class upDate
         int getMonth() const;   // Get month
         int getDay() const;     // Get day
         int getYear() const;    // Get year
+        string getMonthName() const; // Get month name 
 
         ~upDate();// Destructor
 

@@ -9,6 +9,7 @@
 
 #include "upDate.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
 // Default constructor
@@ -136,6 +137,17 @@ int upDate::getYear() const
 {
     return date_ptr[2];
 }// end getYear
+
+// Get month name
+string upDate::getMonthName() const
+{
+    // Create string array to hold the month names
+    string months[12] = { "January", "Febuary", "March", "April", 
+                            "May", "June", "July", "August", "September", 
+                            "October", "November", "December" };
+    
+    return months[date_ptr[0] - 1];
+}// end getMonthName
 
 // Destructor
 upDate::~upDate()
