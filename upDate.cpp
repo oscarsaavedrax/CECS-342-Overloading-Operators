@@ -131,6 +131,14 @@ void upDate::J2G(int JD, int &m, int &d, int &y)
     y = i;
 }// end J2G
 
+// Return the Julian integer of the date
+int upDate::julian()
+{
+    int JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+
+    return JD;
+}// end julian
+
 // Overloaded assignment operator
 upDate& upDate::operator=(const upDate &D)
 {
