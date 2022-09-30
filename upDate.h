@@ -37,6 +37,8 @@ class upDate
         upDate& operator--(int); // Overloaded postfix decrement operator
         upDate& operator--(); // Overloaded prefix decrement operator
 
+        bool operator==(const upDate &D); // Overloaded equality operator
+
         friend ostream& operator<<(ostream& out, const upDate &D); // Overloaded cout operator
 
         int getMonth() const;   // Get month

@@ -244,6 +244,19 @@ ostream& operator<<(ostream& out, const upDate &D)
     return out;
 }// end cout operator
 
+// Overloaded equality operator
+bool upDate::operator==(const upDate &D)
+{
+    bool flag = false;
+
+    if (this->date_ptr[0] == D.date_ptr[0] && 
+        this->date_ptr[1] == D.date_ptr[1] && 
+        this->date_ptr[2] == D.date_ptr[2])
+        flag = true;
+
+    return flag;
+}// end operator==
+
 // Getter for month variable
 int upDate::getMonth() const
 {
