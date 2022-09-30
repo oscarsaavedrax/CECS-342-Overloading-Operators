@@ -32,6 +32,7 @@ class upDate
         upDate& operator+(int n);  // Overloaded addition operator
         upDate& operator-(int n); // Overloaded subtraction operator
         upDate& operator++(int); // Overloaded postfix increment operator
+        upDate& operator++(); // Overloaded prefix increment operator
 
         friend ostream& operator<<(ostream& out, const upDate &D); // Overloaded cout operator
 

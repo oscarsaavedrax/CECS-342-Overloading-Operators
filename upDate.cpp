@@ -178,7 +178,7 @@ upDate& upDate::operator+(int n)
     return *this;
 }// end operator+
 
-// overloaded subtraction operator
+// Overloaded subtraction operator
 upDate& upDate::operator-(int n)
 {
     // Convert to Julian and subtract n 
@@ -190,14 +190,23 @@ upDate& upDate::operator-(int n)
     return *this;
 }// end operator-
 
-//Overloaded postfix operator increment operator
+// Overloaded postfix operator increment operator
 upDate& upDate::operator++(int)
 {
     // Increment by one
-    this->date_ptr[1] += 1;
+    this->date_ptr[1] = date_ptr[1]++;
 
     return *this;
-}// end operator++
+}// end operator++(int)
+
+// Overloaded prefix increment operator
+upDate& upDate::operator++()
+{
+    // Increment by one
+    this->date_ptr[1] = ++date_ptr[1];
+
+    return *this;
+}// end operator++()
 
 // Overloaded cout operator
 ostream& operator<<(ostream& out, const upDate &D)
