@@ -7,14 +7,10 @@
 // program from any other source. I further certify that I typed each and every line of 
 // code in this program.
 
-#pragma
-
 class upDate
 {
     private:
-        int month;
-        int day;
-        int year;
+        int *date_ptr;  // Pointer to a integer date array
     public:
         // Default constructor
         upDate();

@@ -14,17 +14,25 @@ using namespace std;
 // Default constructor
 upDate::upDate()
 {
-    month = 5;
-    day = 11;
-    year = 1959;
+    // Dynamically allocate new integer array to hold date
+    date_ptr = new int[3];
+    cout << "New date pointer created." << endl;
+
+    date_ptr[0] = 5;
+    date_ptr[1] = 11;
+    date_ptr[2] = 1959;
 }
 
 // Overloaded constructor
 upDate::upDate(int m, int d, int y)
 {
-    month = m;
-    day = d;
-    year = y;
+    // Dynamically allocate new integer array to hold date
+    date_ptr = new int[3];
+    cout << "New date pointer created." << endl;
+
+    date_ptr[0] = m;
+    date_ptr[1] = d;
+    date_ptr[2] = y;
 }
 
 // Convert Gregorian date to Julian date
@@ -65,24 +73,24 @@ void upDate::J2G(int JD, int &m, int &d, int &y)
 // Getter for month variable
 int upDate::getMonth() const
 {
-    return month;
+    return date_ptr[0];
 }
 
 // Getter for day variable
 int upDate::getDay() const
 {
-    return day;
+    return date_ptr[1];
 }
 
 // Getter for year variable
 int upDate::getYear() const
 {
-    return year;
+    return date_ptr[2];
 }
-
 
 // Destructor
 upDate::~upDate()
 {
-    cout << "Destructor executed" << endl;
+    delete []date_ptr;
+    cout << "Date pointer destroyed." << endl;
 }
