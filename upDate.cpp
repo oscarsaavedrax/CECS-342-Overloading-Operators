@@ -249,13 +249,50 @@ bool upDate::operator==(const upDate &D)
 {
     bool flag = false;
 
-    if (this->date_ptr[0] == D.date_ptr[0] && 
-        this->date_ptr[1] == D.date_ptr[1] && 
-        this->date_ptr[2] == D.date_ptr[2])
+    // Convert to Julian
+    int this_JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+    int other_JD = G2J(D.date_ptr[0], D.date_ptr[1], D.date_ptr[2]);
+
+    // Compare Julian dates
+    if (this_JD == other_JD)
         flag = true;
 
     return flag;
 }// end operator==
+
+// Overloaded less than operator
+bool upDate::operator<(const upDate &D)
+{
+    bool flag = false;
+
+    // Convert to Julian
+    int this_JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+    int other_JD = G2J(D.date_ptr[0], D.date_ptr[1], D.date_ptr[2]);
+
+    // Compare Julian dates
+    if (this_JD < other_JD)
+        flag = true;
+
+    return flag;
+
+}// end operator<
+
+// Overloaded greater than operator
+bool upDate::operator>(const upDate &D)
+{
+    bool flag = false;
+
+    // Convert to Julian
+    int this_JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+    int other_JD = G2J(D.date_ptr[0], D.date_ptr[1], D.date_ptr[2]);
+
+    // Compare Julian dates
+    if (this_JD > other_JD)
+        flag = true;
+
+    return flag;
+
+}// end operator>
 
 // Getter for month variable
 int upDate::getMonth() const

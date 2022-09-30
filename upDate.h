@@ -38,6 +38,8 @@ class upDate
         upDate& operator--(); // Overloaded prefix decrement operator
 
         bool operator==(const upDate &D); // Overloaded equality operator
+        bool operator<(const upDate &D); // Overloaded less than operator
+        bool operator>(const upDate &D); // Overloaded greater than operator
 
         friend ostream& operator<<(ostream& out, const upDate &D); // Overloaded cout operator
 
