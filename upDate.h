@@ -15,7 +15,7 @@ class upDate
 {
     private:
         int *date_ptr;  // Pointer to a integer date array
-            
+        static int date_count;
         bool validDate(int m, int d, int y);   // Verify the entered date is valid
     public:
         upDate();   // Default constructor
@@ -49,6 +49,8 @@ class upDate
         int getDay() const;     // Get day
         int getYear() const;    // Get year
         string getMonthName() const; // Get month name 
+
+        static int GetDateCount();  // Static method to get number of date objects
 
         ~upDate();// Destructor
 

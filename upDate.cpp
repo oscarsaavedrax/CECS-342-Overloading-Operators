@@ -22,6 +22,8 @@ upDate::upDate()
     date_ptr[0] = 5;
     date_ptr[1] = 11;
     date_ptr[2] = 1959;
+
+    date_count += 1;
 }// end upDate default constructor
 
 // Overloaded constructor
@@ -44,6 +46,8 @@ upDate::upDate(int m, int d, int y)
         date_ptr[1] = 11;
         date_ptr[2] = 1959;
     }
+
+    date_count += 1;
 }// end upDate overloaded constructor
 
 // Overloaded constructor
@@ -60,6 +64,8 @@ upDate::upDate(int J)
     date_ptr[0] = temp_m;
     date_ptr[1] = temp_d;
     date_ptr[2] = temp_y;
+
+    date_count += 1;
 }// end upDate overloaded constructor
 
 // Copy constructor
@@ -71,6 +77,8 @@ upDate::upDate(const upDate &D)
     date_ptr[0] = D.getMonth();
     date_ptr[1] = D.getDay();
     date_ptr[2] = D.getYear();
+
+    date_count += 1;
 }// end copy constructor
 
 // Function to verify the entered date is valid
@@ -333,9 +341,16 @@ string upDate::getMonthName() const
     return months[date_ptr[0] - 1];
 }// end getMonthName
 
+// Static method to get number of date objects
+int upDate::GetDateCount()
+{
+    return date_count;
+}// end GetDateCount
+
 // Destructor
 upDate::~upDate()
 {
     delete []date_ptr;
+    date_count -= 1;
     cout << "Date pointer destroyed." << endl;
 }// end upDate destructor
