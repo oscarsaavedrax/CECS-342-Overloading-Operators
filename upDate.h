@@ -41,6 +41,8 @@ class upDate
         bool operator<(const upDate &D); // Overloaded less than operator
         bool operator>(const upDate &D); // Overloaded greater than operator
 
+        int operator-(const upDate &D); // Overloaded subtraction operator with objects
+
         friend ostream& operator<<(ostream& out, const upDate &D); // Overloaded cout operator
 
         int getMonth() const;   // Get month

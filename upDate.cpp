@@ -236,14 +236,6 @@ upDate& upDate::operator--()
 
 }// end operator--()
 
-// Overloaded cout operator
-ostream& operator<<(ostream& out, const upDate &D)
-{
-    out << D.date_ptr[0] << "/" << D.date_ptr[1] << "/" << D.date_ptr[2];
-
-    return out;
-}// end cout operator
-
 // Overloaded equality operator
 bool upDate::operator==(const upDate &D)
 {
@@ -293,6 +285,24 @@ bool upDate::operator>(const upDate &D)
     return flag;
 
 }// end operator>
+
+//Overloaded subtraction operator with objects
+int upDate::operator-(const upDate &D)
+{
+    // Convert to Julian dates
+    int this_JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+    int D_JD = G2J(D.date_ptr[0], D.date_ptr[1], D.date_ptr[2]);
+
+    return (this_JD - D_JD);
+}// end operator-(const upDate)
+
+// Overloaded cout operator
+ostream& operator<<(ostream& out, const upDate &D)
+{
+    out << D.date_ptr[0] << "/" << D.date_ptr[1] << "/" << D.date_ptr[2];
+
+    return out;
+}// end cout operator
 
 // Getter for month variable
 int upDate::getMonth() const
