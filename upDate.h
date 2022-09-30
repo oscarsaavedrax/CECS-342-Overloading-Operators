@@ -44,6 +44,7 @@ class upDate
         int operator-(const upDate &D); // Overloaded subtraction operator with objects
 
         friend ostream& operator<<(ostream& out, const upDate &D); // Overloaded cout operator
+        friend upDate operator+(int n, const upDate &D); // Overloaded addition operator
 
         int getMonth() const;   // Get month
         int getDay() const;     // Get day

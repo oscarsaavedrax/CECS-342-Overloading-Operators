@@ -17,7 +17,6 @@ upDate::upDate()
 {
     // Dynamically allocate new integer array to hold date
     date_ptr = new int[3];
-    cout << "New date pointer created." << endl;
 
     date_ptr[0] = 5;
     date_ptr[1] = 11;
@@ -31,7 +30,6 @@ upDate::upDate(int m, int d, int y)
 {
     // Dynamically allocate new integer array to hold date
     date_ptr = new int[3];
-    cout << "New date pointer created." << endl;
 
     // Verify date is valid
     if(validDate(m, d, y))
@@ -59,7 +57,6 @@ upDate::upDate(int J)
     J2G(J, temp_m, temp_d, temp_y);
 
     date_ptr = new int[3];
-    cout << "New date pointer created." << endl;
 
     date_ptr[0] = temp_m;
     date_ptr[1] = temp_d;
@@ -72,7 +69,6 @@ upDate::upDate(int J)
 upDate::upDate(const upDate &D)
 {
     date_ptr = new int[3];
-    cout << "New date pointer created." << endl;
 
     date_ptr[0] = D.getMonth();
     date_ptr[1] = D.getDay();
@@ -341,6 +337,17 @@ string upDate::getMonthName() const
     return months[date_ptr[0] - 1];
 }// end getMonthName
 
+// Overloaded addition operator
+upDate operator+(int n, const upDate &D)
+{
+    upDate temp(D);
+    int JD = temp.G2J(temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]) + n;
+
+    temp.J2G(JD, temp.date_ptr[0], temp.date_ptr[1], temp.date_ptr[2]);
+    
+    return temp;
+}// end overloaded addition operator
+
 // Static method to get number of date objects
 int upDate::GetDateCount()
 {
@@ -352,5 +359,4 @@ upDate::~upDate()
 {
     delete []date_ptr;
     date_count -= 1;
-    cout << "Date pointer destroyed." << endl;
 }// end upDate destructor
