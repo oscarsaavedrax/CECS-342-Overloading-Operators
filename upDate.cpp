@@ -154,6 +154,30 @@ upDate& upDate::operator+=(int n)
     return *this;
 }// end operator+=
 
+// Overloaded subtraction with assignment operator
+upDate& upDate::operator-=(int n)
+{
+    // Convert to Julian and subtract n 
+    int JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]) - n;
+
+    // Convert back to Gregorian
+    J2G(JD, this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+
+    return *this;
+}// end operator-=
+
+// Overloaded addition operator
+upDate& upDate::operator+(int n)
+{
+    // Convert to Julian and add n 
+    int JD = G2J(this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]) + n;
+
+    // Convert back to Gregorian
+    J2G(JD, this->date_ptr[0], this->date_ptr[1], this->date_ptr[2]);
+
+    return *this;
+}// end operator+
+
 // Getter for month variable
 int upDate::getMonth() const
 {

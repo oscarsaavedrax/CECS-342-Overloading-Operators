@@ -27,6 +27,7 @@ class upDate
 
         upDate& operator=(const upDate &D); // Overloaded assignment operator
         upDate& operator+=(int n); // Overloaded addition with assignment operator
+        upDate& operator-=(int n); // Overloaded subtraction with assignment operator
         upDate& operator+(int n);  // Overloaded addition operator
 
         int getMonth() const;   // Get month
