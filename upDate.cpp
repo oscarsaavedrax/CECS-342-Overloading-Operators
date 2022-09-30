@@ -131,6 +131,17 @@ void upDate::J2G(int JD, int &m, int &d, int &y)
     y = i;
 }// end J2G
 
+// Overloaded assignment operator
+upDate& upDate::operator=(const upDate &D)
+{
+    // Deep copy
+    date_ptr[0] = D.date_ptr[0];
+    date_ptr[1] = D.date_ptr[1];
+    date_ptr[2] = D.date_ptr[2];
+
+    return *this;
+}// end operator=
+
 // Getter for month variable
 int upDate::getMonth() const
 {
